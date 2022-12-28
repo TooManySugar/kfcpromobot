@@ -21,9 +21,11 @@ MEDIALINK  - URL to KFC's media api
 
 In it's working directory bot will create `cache` folder and `database.db` - SQLite database
 
+Run
+
 ## Docker
 
-To build docker image root certificates required. You can obtain them using [this](https://github.com/agl/extract-nss-root-certs). Those must be called `ca_certs.pem` and poot in same folder with `Dockerfile` or edit `Dockerfile` if you so smart.
+To build docker image root certificates required. You can obtain them using [this](https://github.com/agl/extract-nss-root-certs). Those must be called `ca_certs.pem` and put in same folder with `Dockerfile` or edit `Dockerfile` if you so smart.
 
 ```bash
 docker build -t desiredtagforimage .
@@ -34,7 +36,8 @@ Before running container create volume to store cache, database, etc. It must be
 docker run example:
 
 ```bash
-docker run -d --name kfc_promo_bot --mount source=bot_volume,target=/app \
+docker run -d --name kfc_promo_bot \
+    --mount source=bot_volume,target=/app \
     -e "TGBOTTOKEN=1234567890:Loremipsumdolorsitametconsecteturad" \
     -e "KFCAPILINK=https://..." \
     -e "MEDIALINK=https://..." \
